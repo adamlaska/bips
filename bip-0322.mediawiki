@@ -34,7 +34,8 @@ interoperability with existing signing hardware, we also define a signature mess
 resembles a Bitcoin transaction (except that it contains an invalid input, so it cannot be spent on
 any real network).
 
-The Proof of Funds variant allows demonstrating control of a set of UTXOs.
+The [[#full-proof-of-funds|Proof of Funds]] variant allows demonstrating control
+of a set of UTXOs in addition to the message being signed.
 The list of UTXOs may or may not be related to the address being signed with (the
 <code>message_challenge</code>).
 But in any case, the UTXO list does not aim to prove completeness (e.g. it does NOT mean:
@@ -98,7 +99,7 @@ UTXOs.
 |}
 
 <sup>1</sup>: Possible on a technical level but should NOT be used anymore in the context of this
-BIP.<br/>
+BIP, see section [[#legacy|Legacy]] below.<br/>
 <sup>2</sup>: Excluding time lock scripts.
 
 Signers must prefix the signature with the variant that was used to create the signature.
@@ -447,15 +448,15 @@ A '''transaction finalizer''' of a BIP-0322 PSBT must follow these steps:
   They finalize the PSBT as specified in [[bip-0174.mediawiki#input-finalizer|BIP-0174]].
 </li>
 <li>
-  They then encode the signature following the same steps as described in
- [[bip-0322.mediawiki#signing|Signing]] above.
+  They then encode the signature following the same steps as described in [[#signing|Signing]]
+  above.
 </li>
 </ol>
 
 == Compatibility ==
 
 This specification is backwards compatible with the legacy signmessage/verifymessage specification
-through the special case as described above.
+through the special case [[#legacy|as described above]].
 To support backward compatibility with implementations of this BIP before it was finalized, a
 verifier might assume the ''simple' variant in the absence of a prefix.
 
