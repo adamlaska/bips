@@ -249,7 +249,7 @@ Validation consists of the following steps:
 ## Confirm that the two transactions together satisfy all consensus rules, except for <code>to_spend</code>'s missing input, and except that ''nSequence'' of <code>to_sign</code>'s first input and ''nLockTime'' of <code>to_sign</code> are not checked.
 # (Optional) If the validator does not have a full script interpreter, it should check that it understands all scripts being satisfied. If not, it should stop here and output ''inconclusive''.
 # Check the '''required rules''':
-## All signatures must use the SIGHASH_ALL flag.
+## All signatures must use the <code>SIGHASH_ALL</code> (or <code>SIGHASH_DEFAULT</code> for [[bip-0341.mediawiki|BIP341 P2TR]] inputs) flag.
 ## The use of <code>CODESEPARATOR</code> or <code>FindAndDelete</code> is forbidden.
 ## <code>LOW_S</code>, <code>STRICTENC</code> and <code>NULLFAIL</code>: valid ECDSA signatures must be strictly DER-encoded and have a low-S value; invalid ECDSA signature must be the empty push
 ## <code>MINIMALDATA</code>: all pushes must be minimally encoded
